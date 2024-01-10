@@ -2,18 +2,20 @@ const livros = require('./array.js');
 
 function quickSort(array){
 	if(array.length <= 1){
-		return array;
+		return array
 	}
 
-	let pivot = array.length - 1;
-	let left = array.filter((_, index) => {
-		array[index].preco < array[pivot].preco;
-	})
-	let rigth = array.filter((_, index) => {
-		array[index].preco > array[pivot].preco;
-	})
-
-	return[...quickSort(left), pivot, ...quickSort(rigth)];
+	const menor = [];
+	const maior = [];
+	const pivot = array.length - 1;
+	for(let atual = 0; atual < array.length - 1; atual++){
+		if(array[atual].preco < array[pivot].preco){
+			menor.push(array[atual]);
+		} else {
+			maior.push(array[atual]);
+		}
+	}
+	return [...quickSort(menor), array[pivot], ...quickSort(maior)];
 }
 
-console.log(livros[0].preco);
+console.log(quickSort(livros));
