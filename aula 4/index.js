@@ -36,6 +36,9 @@ function buscaBinaria(array, de, ate, valor){
 	}
 }
 
-for(let atual = 0; atual <= 11; atual++){
-	console.log(buscaBinaria(arrayTeste, 0, arrayTeste.length - 1, atual));
-}
+console.time();
+console.log(buscaBinaria(arrayTeste, 0, arrayTeste.length - 1, 8));
+console.timeEnd();
+console.time();
+console.log(arrayTeste.filter((_, index) => {return arrayTeste[index] == 8}));
+console.timeEnd();
